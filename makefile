@@ -16,7 +16,11 @@ SRCS2 = ./src/fibonacci/fibonacci.c ./src/fibonacci/main.c
 OBJS2 = $(SRCS2:.c=.o)
 
 
-all : clean-objects  mergeSort
+all : clean-objects  mergeSort fibonacci
+
+clean:
+	clean-objects
+	$(RM) ./bin/*
 
 clean-objects:
 	$(RM) $(RFLAGS) ./src/mergeSort/*.o
@@ -24,5 +28,7 @@ clean-objects:
 
 mergeSort: $(OBJS1)
 	$(CC) $(LFLAGS) $(INCLUDES) $(OBJS1) -o ./bin/mergeSort -lm
+fibonacci: $(OBJS2)
+	$(CC) $(LFLAGS) $(INCLUDES) $(OBJS2) -o ./bin/fibonacci -lm
 .c.o:
 	$(CC) $(CFLAGS) $(INCLUDES) $< -o $@
