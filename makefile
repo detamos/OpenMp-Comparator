@@ -18,8 +18,7 @@ OBJS2 = $(SRCS2:.c=.o)
 
 all : clean-objects  mergeSort fibonacci
 
-clean:
-	clean-objects
+clean: clean-objects
 	$(RM) ./bin/*
 
 clean-objects:
