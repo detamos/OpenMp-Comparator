@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <limits.h>
 
-void merge(int *,int ,int ,int );
-void mergeSort(int *,int ,int );
+void merge(long *,long ,long ,long );
+void mergeSort(long *,long ,long );
 
 #endif

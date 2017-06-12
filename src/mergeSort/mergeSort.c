@@ -1,12 +1,12 @@
 #include "mergeSort.h"
 
-void merge(int *arr,int l,int m,int r)
+void merge(long *arr,long l,long m,long r)
 {
-	int n1 = m-l+1;
-	int n2 = r-m;
+	long n1 = m-l+1;
+	long n2 = r-m;
 
-	int a1[n1+1],a2[n2+1];
-	int i,j,k;
+	long a1[n1+1],a2[n2+1];
+	long i,j,k;
 	for(i=0;i<n1;i++)
 	{
 		a1[i] = arr[l+i];
@@ -33,11 +33,11 @@ void merge(int *arr,int l,int m,int r)
 	}
 }
 
-void mergeSort(int *arr,int l,int r)
+void mergeSort(long *arr,long l,long r)
 {
 	if(l < r)
 	{
-		int mid = l + (r-l)/2;
+		long mid = l + (r-l)/2;
 		mergeSort(arr,l,mid);
 		mergeSort(arr,mid+1,r);
 		merge(arr,l,mid,r);

@@ -5,13 +5,13 @@
 
 int main(int argc,char *argv[])
 {	
-	int *arr,n,i;
-	scanf("%d",&n);
-	arr = (int*)(malloc(sizeof(int)*n));
+	long*arr,n,i;
+	scanf("%ld",&n);
+	arr = (long*)(malloc(sizeof(long)*n));
 	
 	clock_t start,end;
 	for(i=0;i<n;i++)
-		scanf("%d",&arr[i]);
+		scanf("%ld",&arr[i]);
 
 	start = clock();
 	mergeSort(arr,0,n-1);
