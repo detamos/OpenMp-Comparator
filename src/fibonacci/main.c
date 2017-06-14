@@ -1,19 +1,32 @@
 #include "fibonacci.h"
 #include <stdio.h>
+#include <omp.h>
 #include <stdlib.h>
-#include <time.h>
 
 int main(int argc,char *argv[])
-{	
-	long n;
-	scanf("%ld",&n);
-	clock_t start,end;
+{
+	if(argc < 3)
+	{
+		printf("Wrong number of arguments\n");
+		return 0;
+	}	
+	long ans;
+	char *ptr;
+	long n = strtol(argv[2],&ptr,10);
+	if(argv[1][0] == 'o')
+	{
+		omp_set_dynamic(0);
+		omp_set_num_threads(4);
 
-	start = clock();
-	fibonacci(n);
-	end = clock();
-
-	printf("Time : %f\n",(float)(end-start)/CLOCKS_PER_SEC);
-
+		#pragma omp parallel shared(n)
+		{
+			#pragma omp single
+			ans = fibonacci_omp(n);
+		}
+	}
+	else
+	{
+		ans = fibonacci(n);
+	}
 	return 0;
 }
