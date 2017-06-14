@@ -1,6 +1,6 @@
 CC = gcc
-CFLAGS = -c -Wall -std=gnu99 -I
-LFLAGS = -Wall -std=gnu99 -I
+CFLAGS = -c -I
+LFLAGS = -I
 OFLAGS = -fopenmp
 
 DFLAGS = -g -Wextra -Werror
@@ -26,8 +26,8 @@ clean-objects:
 	$(RM) $(RFLAGS) ./src/fibonacci/*.o
 
 mergeSort: $(OBJS1)
-	$(CC) $(LFLAGS) $(INCLUDES) $(OBJS1) -o ./bin/mergeSort -lm
+	$(CC) $(OFLAGS) $(LFLAGS) $(INCLUDES) $(OBJS1) -o ./bin/mergeSort -lm
 fibonacci: $(OBJS2)
-	$(CC) $(LFLAGS) $(INCLUDES) $(OBJS2) -o ./bin/fibonacci -lm
+	$(CC) $(OFLAGS) $(LFLAGS) $(INCLUDES) $(OBJS2) -o ./bin/fibonacci -lm
 .c.o:
 	$(CC) $(CFLAGS) $(INCLUDES) $< -o $@
