@@ -2,11 +2,13 @@
 
 void merge(long *arr,long l,long m,long r)
 {
+
 	long n1 = m-l+1;
 	long n2 = r-m;
-
-	long a1[n1+1],a2[n2+1];
 	long i,j,k;
+	long *a1,*a2;
+	a1 = (long*)(malloc(sizeof(long)*(n1+1)));
+	a2 = (long*)(malloc(sizeof(long)*(n2+1)));
 	for(i=0;i<n1;i++)
 	{
 		a1[i] = arr[l+i];
@@ -15,7 +17,8 @@ void merge(long *arr,long l,long m,long r)
 	{
 		a2[i] = arr[m+i+1];
 	}
-	a1[n1] = a2[n2] = INT_MAX;
+
+	a1[n1] = a2[n2] = 1e18;
 	i = j = 0,k=l;
 	while(k <= r)
 	{

@@ -15,10 +15,11 @@ int main(int argc,char *argv[])
 
 	long n,i;
 	scanf("%ld",&n);
-	long arr[n];
+	
+	long *arr;
+	arr = (long*)(malloc(sizeof(long)*n));
 	for(i=0;i<n;i++)
 		scanf("%ld\n",&arr[i]);
-
 	if(argv[1][0] == 'o')
 	{
 		omp_set_dynamic(0);
@@ -35,8 +36,5 @@ int main(int argc,char *argv[])
 		mergeSort(arr,0,n-1);
 	}
 	return 0;
-	for(i=0;i<n;i++)
-		printf("%ld ",arr[i]);
-	printf("\n");
 	return 0;
 }
