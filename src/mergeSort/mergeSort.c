@@ -43,3 +43,27 @@ void mergeSort(long *arr,long l,long r)
 		merge(arr,l,mid,r);
 	}
 }
+
+void mergeSort_omp(long *arr,long l,long r)
+{
+	if(l < r)
+	{
+		long mid = l + (r-l)/2;
+		if(abs(l-r) >= 50)
+		{
+	
+			#pragma omp task shared(arr,mid) 
+			mergeSort_omp(arr,l,mid);
+			#pragma omp task shared(arr,mid) 
+			mergeSort_omp(arr,mid+1,r);
+			#pragma omp taskwait
+			merge(arr,l,mid,r);
+		}
+		else
+		{
+			mergeSort_omp(arr,l,mid);
+			mergeSort_omp(arr,mid+1,r);
+			merge(arr,l,mid,r);
+		}
+	}
+}
